@@ -93,7 +93,7 @@ function setStatus(value) {
         "online";
 
         status.innerHTML =
-        "🟢 Hoạt Động";
+        "Hoạt Động";
 
     } else {
 
@@ -101,7 +101,7 @@ function setStatus(value) {
         "offline";
 
         status.innerHTML =
-        "🔴 Không Hoạt Động";
+        "Không Hoạt Động";
     }
 }
 
