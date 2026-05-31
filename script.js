@@ -40,7 +40,25 @@ initializeApp(firebaseConfig);
 
 const db =
 getDatabase(app);
+const db =
+getDatabase(app);
 
+onValue(
+    ref(db, "status"),
+    (snapshot) => {
+
+        const active =
+        snapshot.val();
+
+        console.log(
+            "Firebase Status:",
+            active
+        );
+
+        setStatus(active);
+
+    }
+);
 
 /* ====================================
    ORDER MODAL
