@@ -1,7 +1,9 @@
 console.log("SCRIPT LOADED");
+
 /* ====================================
-   WEBSITE STATUS
+   FIREBASE
 ==================================== */
+
 import { initializeApp }
 from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
 
@@ -38,6 +40,13 @@ const firebaseConfig = {
 const app =
 initializeApp(firebaseConfig);
 
+const db =
+getDatabase(app);
+
+/* ====================================
+   REALTIME STATUS
+==================================== */
+
 onValue(
     ref(db, "status"),
     (snapshot) => {
@@ -47,61 +56,135 @@ onValue(
 
         console.log(
             "Firebase Status:",
-            active
+            active,
+            typeof active
         );
 
         setStatus(active);
+    },
+    (error) => {
 
+        console.error(
+            "Firebase Error:",
+            error
+        );
     }
 );
+
+/* ====================================
+   STATUS UI
+==================================== */
+
+function setStatus(value) {
+
+    const status =
+    document.getElementById(
+        "statusText"
+    );
+
+    if (!status) return;
+
+    if (
+        value === true ||
+        value === "true"
+    ) {
+
+        status.className =
+        "online";
+
+        status.innerHTML =
+        "🟢 Hoạt Động";
+
+    } else {
+
+        status.className =
+        "offline";
+
+        status.innerHTML =
+        "🔴 Không Hoạt Động";
+    }
+}
 
 /* ====================================
    ORDER MODAL
 ==================================== */
 
 function orderNow() {
-    
+
     const modal =
-        document.getElementById(
-            "orderModal"
-        );
-    
+    document.getElementById(
+        "orderModal"
+    );
+
     if (!modal) return;
-    
+
     modal.classList.remove(
         "hide"
     );
-    
+
     modal.classList.add(
         "show"
     );
 }
+
 function closeModal() {
-    
+
     const modal =
-        document.getElementById(
-            "orderModal"
-        );
-    
+    document.getElementById(
+        "orderModal"
+    );
+
     if (!modal) return;
-    
-    modal.classList.add("hide");
-    
+
+    modal.classList.add(
+        "hide"
+    );
+
     setTimeout(() => {
-        
+
         modal.classList.remove(
             "show"
         );
-        
+
         modal.classList.remove(
             "hide"
         );
-        
+
     }, 250);
 }
-window.orderNow = orderNow;
 
-window.closeModal = closeModal;
+/* ====================================
+   GLOBAL FUNCTIONS
+==================================== */
+
+window.orderNow =
+orderNow;
+
+window.closeModal =
+closeModal;
+
+/* ====================================
+   CLOSE MODAL WHEN CLICK OUTSIDE
+==================================== */
+
+window.addEventListener(
+    "click",
+    function(e) {
+
+        const modal =
+        document.getElementById(
+            "orderModal"
+        );
+
+        if (
+            e.target === modal
+        ) {
+
+            closeModal();
+        }
+    }
+);
+
 /* ====================================
    ESC TO CLOSE MODAL
 ==================================== */
@@ -109,63 +192,30 @@ window.closeModal = closeModal;
 document.addEventListener(
     "keydown",
     function(e) {
-        
+
         if (
             e.key === "Escape"
         ) {
-            
+
             closeModal();
         }
-    });
+    }
+);
 
 /* ====================================
-   CARD FADE-IN EFFECT
+   PAGE LOADED EFFECT
 ==================================== */
 
 window.addEventListener(
     "load",
     function() {
-        
+
         document.body.classList.add(
             "loaded"
         );
-    });
 
-/* ====================================
-   OPTIONAL:
-   CHANGE STATUS MANUALLY
-==================================== */
-
-/*
-
-Để đổi trạng thái thủ công:
-
-setStatus(true);
-setStatus(false);
-
-*/
-
-function setStatus(value) {
-    
-    const status =
-        document.getElementById(
-            "statusText"
+        console.log(
+            "PAGE LOADED"
         );
-    
-    if (value) {
-        
-        status.className =
-            "online";
-        
-        status.innerHTML =
-            "🟢 Hoạt Động";
-        
-    } else {
-        
-        status.className =
-            "offline";
-        
-        status.innerHTML =
-            "🔴 Không Hoạt Động";
     }
-}
+);
