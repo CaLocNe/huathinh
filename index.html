@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>HuaThinh</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- Background -->
+
+    <div class="bg"></div>
+
+    <div class="overlay"></div>
+
+    <div class="gold-light"></div>
+
+    <!-- Main -->
+
+    <div class="container">
+
+        <h1 class="title">
+            HuaThinh
+        </h1>
+
+        <p class="subtitle">
+            Dịch Vụ Liên Quân
+        </p>
+
+        <div class="card">
+
+            <!-- Image -->
+
+            <div class="image-box">
+
+                <img
+                    src="poster.jpg"
+                    alt="HuaThinh">
+
+                <div class="image-glow"></div>
+
+            </div>
+
+            <!-- Status -->
+
+            <div class="status">
+
+                Trạng Thái:
+
+                <span
+                    id="statusText"
+                    class="online">
+
+                    Hoạt Động
+
+                </span>
+
+            </div>
+
+            <!-- Services -->
+
+            <div class="services">
+
+                <div class="service">
+                Cải Thiện Rank              </div>
+
+                <div class="service">
+                     Slot 3 Game (15K)
+                </div>
+
+                <div class="service">
+                     Slot Theo Số Lượng Sao
+                    <br>
+                    (KC - TA - CT 7K / 1 Sao)
+                </div>
+
+            </div>
+
+            <!-- Button -->
+
+            <button
+                class="order-btn"
+                onclick="orderNow()">
+
+                ĐẶT HÀNG
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- Modal -->
+
+    <div
+        class="modal"
+        id="orderModal">
+
+        <div class="modal-box">
+
+            <div class="modal-title">
+                Hua Thinh
+            </div>
+
+            <div class="modal-content">
+
+                Đơn Hàng Đang Trống
+
+                <br><br>
+
+                Bạn Có Thể Liên Hệ
+                <a
+                    href="https://zalo.me/0393135487"
+                    target="_blank"
+                    class="contact-link">
+
+                    Zalo: 0393135487
+
+                </a>
+
+                <br><br>
+
+                Hoặc
+                <a
+                    href="https://facebook.com"
+                    target="_blank"
+                    class="contact-link">
+
+                    Facebook: Hứa Thịnh
+
+                </a>
+                Để Đặt Hàng
+
+            </div>
+
+            <button
+                class="modal-btn"
+                onclick="closeModal()">
+
+                Đồng Ý
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- Script -->
+
+   <script type="module" src="script.js"></script>
+
+</body>
+</html>
