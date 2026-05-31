@@ -38,11 +38,6 @@ const firebaseConfig = {
 const app =
 initializeApp(firebaseConfig);
 
-const db =
-getDatabase(app);
-const db =
-getDatabase(app);
-
 onValue(
     ref(db, "status"),
     (snapshot) => {
